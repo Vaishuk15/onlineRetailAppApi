@@ -7,6 +7,7 @@ using System;
 namespace OnlineRetailApp.API.Controllers
 {
 
+
     [ApiController]
     [Route("[controller]")]
     public class ProductController : ControllerBase
