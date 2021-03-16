@@ -12,7 +12,7 @@ namespace OnlineRetailApp.Services.Implementation
     {
 
         private readonly IProductRepository _productRepository;
-        private readonly object _dbcontext;
+        //private readonly object _dbcontext;
 
         public ProductService(IProductRepository productRepository)
         {

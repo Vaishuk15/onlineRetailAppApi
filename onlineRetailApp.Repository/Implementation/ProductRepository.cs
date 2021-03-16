@@ -45,8 +45,6 @@ namespace OnlineRetailApp.Repository.Implementation
 
         public void Update(Guid id, Product product)
         {
-            /*product.Name = product.Name;
-            product.AvailableQuantity= product.AvailableQuantity;*/
 
             var dbProduct = _dbContext.Products.FirstOrDefault(productUpdate => productUpdate.ProductId == id);
 
@@ -66,6 +64,13 @@ namespace OnlineRetailApp.Repository.Implementation
             _dbContext.SaveChanges();
         }
 
+        public void UpdateQuantity(Order order)
+        {
+
+            Product product = GetById(order.ProductId);
+            product.AvailableQuantity -= order.Quantity;
+            _dbContext.SaveChanges();
+        }
 
     }
 }

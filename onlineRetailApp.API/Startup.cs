@@ -9,7 +9,7 @@ using OnlineRetailApp.Repository.Implementation;
 using OnlineRetailApp.Repository.Interface;
 using OnlineRetailApp.Services.Implementation;
 using OnlineRetailApp.Services.Interface;
-/*using Microsoft.OpenApi.Models;*/
+
 
 namespace onlineRetailApp.API
 {
@@ -27,13 +27,12 @@ namespace onlineRetailApp.API
         {
             services.AddControllers();
 
-           /* services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = " API", Version = "v1" });
-            });*/
+            services.AddSwaggerGen();
 
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
 
             services.AddDbContext<AppDbContext>(appDbContext=> appDbContext.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), sql =>
             {
@@ -41,6 +40,11 @@ namespace onlineRetailApp.API
                 sql.CommandTimeout(60);
                 sql.MigrationsAssembly("OnlineRetailApp.Repository");
             }));
+
+           
+            //services.AddMvc();
+
+          
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -49,12 +53,19 @@ namespace onlineRetailApp.API
             {
                 app.UseDeveloperExceptionPage();
             }
-
-           /* app.UseSwagger(c =>
+            app.UseSwagger(c =>
             {
-            });*/
-
+                c.SerializeAsV2 = true;
+            });
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = "swagger";
+            });
+
 
             app.UseRouting();
 
@@ -64,6 +75,8 @@ namespace onlineRetailApp.API
             {
                 endpoints.MapControllers();
             });
+
+            
         }
     }
 }
