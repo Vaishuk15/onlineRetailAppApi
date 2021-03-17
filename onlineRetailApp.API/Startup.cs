@@ -53,6 +53,10 @@ namespace onlineRetailApp.API
             {
                 app.UseDeveloperExceptionPage();
             }
+            using (var scope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                scope.ServiceProvider.GetRequiredService<AppDbContext>().Database.Migrate();
+            }
             app.UseSwagger(c =>
             {
                 c.SerializeAsV2 = true;

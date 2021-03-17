@@ -37,29 +37,23 @@ namespace OnlineRetailApp.Repository.Implementation
         public void Add(Product product)
         {
 
-            _dbContext.Add(product);
+            _dbContext.Products.Add(product);
             _dbContext.SaveChanges();
         }
 
 
 
-        public void Update(Guid id, Product product)
+        public void Update( Product product)
         {
 
-            var dbProduct = _dbContext.Products.FirstOrDefault(productUpdate => productUpdate.ProductId == id);
+          
 
-            dbProduct.ProductName = product.ProductName;
-            dbProduct.AvailableQuantity = product.AvailableQuantity;
-            dbProduct.UpdatedDate = product.UpdatedDate;
-            dbProduct.UnitPrice = product.UnitPrice;
-
-            _dbContext.Products.Update(dbProduct);
+            _dbContext.Products.Update(product);
             _dbContext.SaveChanges();
         }
 
-        public void Delete(Guid id) {
-            Product product = _dbContext.Products.FirstOrDefault(productDelete => productDelete.ProductId == id);
-        
+        public void Delete(Product product) {
+          
             _dbContext.Products.Remove(product);
             _dbContext.SaveChanges();
         }

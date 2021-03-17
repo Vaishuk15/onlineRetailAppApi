@@ -41,7 +41,7 @@ namespace OnlineRetailApp.Services.Implementation
             var product = new Product()
             {
                 ProductName = productViewModel.ProductName,
-                ProductId = productViewModel.ProductId,
+                //ProductId = productViewModel.ProductId,
                 AvailableQuantity = productViewModel.AvailableQuantity,
                  /* CreatedDate= productViewModel.CreatedDate,*/
                   CreatedDate=DateTime.UtcNow,
@@ -55,18 +55,11 @@ namespace OnlineRetailApp.Services.Implementation
 
         }
 
-       public void Delete(Guid id)
+       public void Delete(Product product)
         {
-           /* var product = new Product()
-            {
+          
 
-                Name = productViewModel.Name,
-                Id = productViewModel.Id,
-                AvailableQuantity = productViewModel.AvailableQuantity
-
-            };*/
-
-            _productRepository.Delete(id);
+            _productRepository.Delete(product);
           
             
 
@@ -75,16 +68,14 @@ namespace OnlineRetailApp.Services.Implementation
         public void Update(Guid id,ProductViewModel productViewModel)
         {
 
-            var product = new Product()
-            {
-                ProductName = productViewModel.ProductName,
-                ProductId = productViewModel.ProductId,
-                AvailableQuantity = productViewModel.AvailableQuantity,
-                UpdatedDate = DateTime.UtcNow,
-                UnitPrice = productViewModel.UnitPrice
-            };
+         
 
-            _productRepository.Update(id,product);
+            var productToUpdate = GetById(id);
+            productToUpdate.ProductName = productViewModel.ProductName;
+            productToUpdate.AvailableQuantity = productViewModel.AvailableQuantity;
+            productToUpdate.UpdatedDate = DateTime.UtcNow;
+            productToUpdate.UnitPrice = productViewModel.UnitPrice;
+            _productRepository.Update(productToUpdate);
             
         }
     }

@@ -30,7 +30,7 @@ namespace OnlineRetailApp.API.Controllers
             public IActionResult PlaceOrder([FromBody] OrderViewModel orderViewModel)
             {
             _orderService.PlaceOrder(orderViewModel);
-                return Ok("product ordered!!!");
+                return Ok("product ordered!");
             }
             [HttpDelete("{OrderId}")]
             public IActionResult Delete(Guid OrderId)

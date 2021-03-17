@@ -61,7 +61,8 @@ namespace OnlineRetailApp.API.Controllers
        [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {
-            _productService.Delete(id);
+            Product product = _productService.GetById(id);
+            _productService.Delete(product);
             return Ok("Product Deleted!");
         }
 

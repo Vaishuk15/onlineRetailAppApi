@@ -12,11 +12,9 @@ namespace OnlineRetailApp.Repository.Interface
         Product GetByName(String name);
 
         void Add(Product product);
-        void Update(Guid id,Product product);
-        void Delete(Guid id);
+        void Update(Product product);
+        void Delete(Product product);
         void UpdateQuantity(Order order);
-
-
-
+   
     }
 }

@@ -13,8 +13,10 @@ namespace OnlineRetailApp.Services.Interface
 
         void Add(ProductViewModel productViewModel);
 
-       void Delete(Guid id);
+      
 
-        void Update(Guid id, ProductViewModel productViewModel);
+        void Update(Guid id,ProductViewModel productViewModel);
+        
+        void Delete(Product product);
     }
 }

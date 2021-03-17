@@ -38,7 +38,7 @@ namespace OnlineRetailApp.Services.Implementation
 
             var order= new Order()
                 {
-                    OrderId = orderViewModel.OrderId,
+                    //OrderId = orderViewModel.OrderId,
                     ProductId = orderViewModel.ProductId,
                     CustomerId = Guid.NewGuid(),
                     Quantity = orderViewModel.Quantity,
