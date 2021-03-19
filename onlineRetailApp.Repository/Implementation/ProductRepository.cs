@@ -46,9 +46,7 @@ namespace OnlineRetailApp.Repository.Implementation
         public void Update( Product product)
         {
 
-          
-
-            _dbContext.Products.Update(product);
+          _dbContext.Products.Update(product);
             _dbContext.SaveChanges();
         }
 

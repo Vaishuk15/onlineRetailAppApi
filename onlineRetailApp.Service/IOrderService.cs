@@ -1,5 +1,4 @@
 ﻿using OnlineRetailApp.Models;
-using OnlineRetailApp.Models.ViewModel;
 using OnlineRetailApp.Repository.EntityModel;
 using System;
 using System.Collections.Generic;

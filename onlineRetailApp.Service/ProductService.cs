@@ -41,10 +41,8 @@ namespace OnlineRetailApp.Services.Implementation
             var product = new Product()
             {
                 ProductName = productViewModel.ProductName,
-                //ProductId = productViewModel.ProductId,
                 AvailableQuantity = productViewModel.AvailableQuantity,
-                 /* CreatedDate= productViewModel.CreatedDate,*/
-                  CreatedDate=DateTime.UtcNow,
+                CreatedDate=DateTime.UtcNow,
                 UnitPrice = productViewModel.UnitPrice
 
 

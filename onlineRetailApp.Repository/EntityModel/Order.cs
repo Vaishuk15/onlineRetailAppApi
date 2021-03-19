@@ -25,8 +25,10 @@ namespace OnlineRetailApp.Repository.EntityModel
             public DateTime OrderedDate { get; set; }
 
             public DateTime ShippingDate { get; set; }
+            [ForeignKey(nameof(ProductId))]
+            public virtual Product Product { get; set; }
 
-            //[Column(TypeName = "decimal(12,3)")]
-            //public decimal TotalPrice { get; set; }
-        }
+        //[Column(TypeName = "decimal(12,3)")]
+        //public decimal TotalPrice { get; set; }
+    }
 }

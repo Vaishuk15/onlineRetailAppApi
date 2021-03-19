@@ -1,4 +1,5 @@
-﻿using OnlineRetailApp.Repository.EntityModel;
+﻿using Microsoft.EntityFrameworkCore;
+using OnlineRetailApp.Repository.EntityModel;
 using OnlineRetailApp.Repository.Interface;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace OnlineRetailApp.Repository.Implementation
 
         public List<Order> Get()
         {
-            return _dbContext.Orders.ToList();
+            return _dbContext.Orders.Include(obj => obj.Product).ToList();
         }
 
         public void PlaceOrder(Order order)
@@ -30,7 +31,7 @@ namespace OnlineRetailApp.Repository.Implementation
         public Order GetOrderDetail(Guid OrderId)
 
         {
-            return _dbContext.Orders.FirstOrDefault(o => o.OrderId == OrderId);
+            return _dbContext.Orders.FirstOrDefault(orderDetail => orderDetail.OrderId == OrderId);
         }
         public void Delete(Order order)
         {
